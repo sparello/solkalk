@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "solkalk"
+version = "0.1.0"
+description = "Solar production and profitability engine: SMHI STRÅNG irradiance, ENTSO-E prices, country tariffs and economics on top of pvlib."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [{ name = "Sparello" }]
+keywords = ["solar", "pv", "pvlib", "sweden", "smhi", "entsoe", "lcoe"]
+dependencies = [
+    "pvlib>=0.11",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "responses>=0.25",
+    "ruff",
+]
+excel = ["openpyxl>=3.1"]
+
+[project.scripts]
+solkalk = "solkalk.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/solkalk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = [
+    # pvlib 0.16 uses DatetimeIndex.dayofyear, which pandas >= 3 deprecates; not ours
+    "ignore:DatetimeIndex.dayofyear is deprecated",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

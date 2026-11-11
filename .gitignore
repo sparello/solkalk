@@ -1,0 +1,19 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.cache/
+*.parquet
+.env
+.DS_Store
+
+# Bulk data does not belong in the repo; only small fixtures in tests/fixtures/
+data/
+*.xlsx
