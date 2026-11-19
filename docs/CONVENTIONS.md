@@ -59,3 +59,7 @@ Pipeline features may be imported as subpackages (`solkalk.features.weather` etc
   docstring: `features/production/panels.py` (transposition, cell temperature, DC model),
   `system_losses.py`, `inverter.py`; solar-position timing in `hourly_production.py`. They are
   locked by the regression test in `tests/features/production/test_hourly_production.py`.
+
+## Git
+
+Do not run `git init` or `git clone` in the project. Work in the files as they are.
